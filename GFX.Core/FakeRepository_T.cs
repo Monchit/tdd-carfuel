@@ -10,7 +10,7 @@ namespace GFX.Core
         : IRepository<T>
         where T : class, new()
     {
-
+        //Test
         private ICollection<T> data = new HashSet<T>();
 
         public virtual IQueryable<T> Query(Func<T, bool> predicate)
