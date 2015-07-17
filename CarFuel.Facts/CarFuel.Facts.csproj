@@ -57,14 +57,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CarFacts.cs" />
-    <Compile Include="FillUpFacts.cs" />
+    <Compile Include="Models\CarFacts.cs" />
+    <Compile Include="Models\FillUpFacts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Services\CarServiceFacts.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -79,10 +80,19 @@
       <Project>{2b03f3e9-4e66-41d2-9bbd-8b867ba6c903}</Project>
       <Name>CarFuel.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CarFuel.Services\CarFuel.Services.csproj">
+      <Project>{c0c0cb98-68cd-4cc7-b54b-ce6bea4378ad}</Project>
+      <Name>CarFuel.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GFX.Core\GFX.Core.csproj">
+      <Project>{d8a5dd87-e664-4142-b048-5fade412dddf}</Project>
+      <Name>GFX.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

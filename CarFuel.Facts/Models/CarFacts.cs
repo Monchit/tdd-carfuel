@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xunit; // (2)
 using CarFuel.Models; 
 
-namespace CarFuel.Facts
+namespace CarFuel.Facts.Models
 {
     public class CarFacts // * Add public (1)
     {
@@ -81,8 +81,6 @@ namespace CarFuel.Facts
                 //Assert that f2.NextFillUp is f3 -> use .Same
                 Assert.Same(f2.NextFillUp, f3);
             }
-
-            
         }
 
         public class AverageKilometersPerLiterProperty
