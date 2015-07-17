@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 
@@ -7,8 +9,21 @@ namespace CarFuel.Models
 {
     public class Car
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid Id { get; set; }
+
+        [Required]
+        [StringLength(30)]
         public string Make { get; set; }
+        [StringLength(100)]
         public string Model { get; set; }
+        [StringLength(100)]
+        public string Name { get; set; }
+        [StringLength(30)]
+        public string Color { get; set; }
+        [StringLength(30)]
+        public string PlateNo { get; set; }
+
         public virtual ICollection<FillUp> FillUps { get; set; }
 
         public Car()

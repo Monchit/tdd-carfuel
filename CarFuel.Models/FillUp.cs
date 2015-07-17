@@ -4,16 +4,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace CarFuel.Models
 {
     public class FillUp
     {
-        // 
-        public int Odometer { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid Id { get; set; }
 
+        [Range(0,99999)]
+        public int Odometer { get; set; }
+        [Range(0,999)]
         public double Liters { get; set; }
 
-        public bool? IsFull { get; set; }
+        public bool IsFull { get; set; }
+        public bool IsForgot { get; set; }
+
+        public FillUp NextFillUp { get; set; }
+        public FillUp PreviousFillUp { get; set; }
 
         public FillUp()
             : this(0, 0, true)
@@ -43,9 +53,5 @@ namespace CarFuel.Models
             }
         }
 
-        public FillUp NextFillUp { get; set; }
-        public FillUp PreviousFillUp { get; set; }
-
-        public bool IsForgot { get; set; }
     }
 }
