@@ -1,42 +1,25 @@
-﻿using System;
+﻿using CarFuel.DataAccess.Context;
+using CarFuel.DataAccess.Repositories;
+using CarFuel.Models;
+using GFX.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using CarFuel.DataAccess;
-using CarFuel.Models;
-using CarFuel.DataAccess.Repositories;
-using CarFuel.DataAccess.Context;
 
 namespace CarFuel.Services
 {
-    public class CarService
+    public class CarService : AppServiceBase<Car>
     {
-        private readonly CarRepository repo;//allow assign value by constructor method
 
-        public CarService()
-            : this(new CarRepository())
+        #region Service<T>
+        public override IRepository<Car> Repository { get; set; }
+
+        public override Car Find(params object[] keys)
         {
-
+            Guid key1 = (Guid)keys[0];
+            return Query(x => x.Id == key1).SingleOrDefault();
         }
+        #endregion
 
-        public CarService(CarRepository repo)
-        {
-            this.repo = repo;
-            this.repo.Context = new CarDb();
-        }
-
-        public IEnumerable<Car> GetAll()
-        {
-            return repo.Query(c => true).ToList();
-        }
-
-        public Car Add(Car item)
-        {
-            var c = repo.Add(item);
-            repo.SaveChanges();
-            return c;
-        }
     }
 }
